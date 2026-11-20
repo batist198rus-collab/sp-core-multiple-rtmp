@@ -6,6 +6,7 @@
 !/build-aux
 !/cmake
 !/data
+!/dep
 !/flatpak
 !/src
 !.clang-format
@@ -15,8 +16,11 @@
 !CMakeLists.txt
 !CMakePresets.json
 !LICENSE
+!NOTICE
 !README.md
 !FLATPAK.md
+!installer.nsi
+!SyncEngLocale.ps1
 
 # Exclude lock files
 *.lock.json
