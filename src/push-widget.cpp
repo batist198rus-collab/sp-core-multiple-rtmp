@@ -825,7 +825,7 @@ public:
 
         auto startDesc = std::string(obs_module_text("Hotkey.StartTarget")) + " - " + config_->name;
         startHotkeyId_ = obs_hotkey_register_frontend(
-            ("obs-multi-rtmp.start." + targetid_).c_str(),
+            ("sp-core-multiple-rtmp.start." + targetid_).c_str(),
             startDesc.c_str(),
             [](void* data, obs_hotkey_id, obs_hotkey_t*, bool pressed) {
                 if (!pressed)
@@ -837,7 +837,7 @@ public:
 
         auto stopDesc = std::string(obs_module_text("Hotkey.StopTarget")) + " - " + config_->name;
         stopHotkeyId_ = obs_hotkey_register_frontend(
-            ("obs-multi-rtmp.stop." + targetid_).c_str(),
+            ("sp-core-multiple-rtmp.stop." + targetid_).c_str(),
             stopDesc.c_str(),
             [](void* data, obs_hotkey_id, obs_hotkey_t*, bool pressed) {
                 if (!pressed)

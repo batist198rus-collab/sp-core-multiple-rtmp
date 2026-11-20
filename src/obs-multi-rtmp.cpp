@@ -15,7 +15,7 @@
 #include <Windows.h>
 #endif
 
-#define ConfigSection "obs-multi-rtmp"
+#define ConfigSection "sp-core-multiple-rtmp"
 
 static class GlobalServiceImpl : public GlobalService
 {
@@ -341,7 +341,7 @@ public:
         }
         else
         {
-            auto label = new QLabel(u8"<p>This plugin is provided for free. <br>Author: SoraYuki (<a href=\"https://paypal.me/sorayuki0\">donate</a>) </p>", container_);
+            auto label = new QLabel(u8"<p>SP-CORE Multiple RTMP · <a href=\"https://sp-core.ru\">sp-core.ru</a><br>Based on obs-multi-rtmp by SoraYuki (GPL-2.0)</p>", container_);
             label->setTextFormat(Qt::RichText);
             label->setTextInteractionFlags(Qt::TextBrowserInteraction);
             label->setOpenExternalLinks(true);
@@ -601,8 +601,8 @@ private:
 };
 
 OBS_DECLARE_MODULE()
-OBS_MODULE_USE_DEFAULT_LOCALE("obs-multi-rtmp", "en-US")
-OBS_MODULE_AUTHOR("雷鳴 (@sorayukinoyume)")
+OBS_MODULE_USE_DEFAULT_LOCALE("sp-core-multiple-rtmp", "en-US")
+OBS_MODULE_AUTHOR("SP CORE")
 
 bool obs_module_load()
 {
@@ -614,15 +614,15 @@ bool obs_module_load()
     });
 
     auto dock = new MultiOutputWidget();
-    dock->setObjectName("obs-multi-rtmp-dock");
-    if (!obs_frontend_add_dock_by_id("obs-multi-rtmp-dock", obs_module_text("Title"), dock))
+    dock->setObjectName("sp-core-multiple-rtmp-dock");
+    if (!obs_frontend_add_dock_by_id("sp-core-multiple-rtmp-dock", obs_module_text("Title"), dock))
     {
         delete dock;
         return false;
     }
 
     obs_hotkey_register_frontend(
-        "obs-multi-rtmp.start_all",
+        "sp-core-multiple-rtmp.start_all",
         obs_module_text("Hotkey.StartAllTargets"),
         [](void* private_data, obs_hotkey_id, obs_hotkey_t*, bool pressed) {
             auto dock = static_cast<MultiOutputWidget*>(private_data);
@@ -634,7 +634,7 @@ bool obs_module_load()
         dock
     );
     obs_hotkey_register_frontend(
-        "obs-multi-rtmp.stop_all",
+        "sp-core-multiple-rtmp.stop_all",
         obs_module_text("Hotkey.StopAllTargets"),
         [](void* private_data, obs_hotkey_id, obs_hotkey_t*, bool pressed) {
             auto dock = static_cast<MultiOutputWidget*>(private_data);
@@ -646,7 +646,7 @@ bool obs_module_load()
         dock
     );
 
-    blog(LOG_INFO, TAG "version: %s by SoraYuki https://github.com/sorayuki/obs-multi-rtmp/", PLUGIN_VERSION);
+    blog(LOG_INFO, TAG "version: %s by SP CORE https://github.com/batist198rus-collab/sp-core-multiple-rtmp (fork of sorayuki/obs-multi-rtmp)", PLUGIN_VERSION);
 
     obs_frontend_add_event_callback(
         [](enum obs_frontend_event event, void *private_data) {
@@ -671,5 +671,5 @@ bool obs_module_load()
 
 const char *obs_module_description(void)
 {
-    return "Multiple RTMP Output Plugin";
+    return "SP-CORE Multiple RTMP";
 }

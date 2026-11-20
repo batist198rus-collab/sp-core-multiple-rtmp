@@ -8,7 +8,7 @@ separate-locales: false
 build-options:
   prefix: /app/plugins/MultiRTMP
 modules:
-  - name: obs-multi-rtmp
+  - name: sp-core-multiple-rtmp
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
@@ -33,6 +33,7 @@ modules:
           - build_macos
           - obj
           - release
+          - sp-core-multiple-rtmp-setup.exe
           - obs-multi-rtmp-setup.exe
       - type: file
         path: com.obsproject.Studio.Plugin.MultiRTMP.metainfo.xml

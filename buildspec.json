@@ -33,12 +33,12 @@
     },
     "platformConfig": {
         "macos": {
-            "bundleId": "net.sorayuki.obs-multi-rtmp"
+            "bundleId": "ru.spcore.multiple-rtmp"
         }
     },
-    "name": "obs-multi-rtmp",
-    "version": "0.8.0.0",
-    "author": "SoraYuki",
-    "website": "https://github.com/sorayuki",
-    "email": "me@example.com"
+    "name": "sp-core-multiple-rtmp",
+    "version": "0.9.0.0",
+    "author": "SP CORE",
+    "website": "https://sp-core.ru",
+    "email": "support@sp-core.ru"
 }

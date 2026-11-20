@@ -258,7 +258,7 @@ void SaveMultiOutputConfig() {
     auto profiledir = obs_frontend_get_current_profile_path();
     if (profiledir) {
         std::string filename = profiledir;
-        filename += "/obs-multi-rtmp.json";
+        filename += "/sp-core-multiple-rtmp.json";
         auto content = SaveMultiOutputConfig(GlobalMultiOutputConfig());
         os_quick_write_utf8_file_safe(filename.c_str(), content.c_str(), content.size(), true, "tmp", "bak");
         blog(LOG_INFO, TAG "Save config into %s", filename.c_str());
@@ -271,9 +271,17 @@ bool LoadMultiOutputConfig() {
     auto profiledir = obs_frontend_get_current_profile_path();
     bool ret = false;
     if (profiledir) {
-        std::string filename = profiledir;
-        filename += "/obs-multi-rtmp.json";
+        std::string filename = std::string(profiledir) + "/sp-core-multiple-rtmp.json";
         auto content = os_quick_read_utf8_file(filename.c_str());
+        // Migrate from upstream obs-multi-rtmp profile config if present.
+        if (!content) {
+            std::string legacy = std::string(profiledir) + "/obs-multi-rtmp.json";
+            content = os_quick_read_utf8_file(legacy.c_str());
+            if (content) {
+                filename = legacy;
+                blog(LOG_INFO, TAG "Migrating config from upstream %s", legacy.c_str());
+            }
+        }
         if (content) {
             GlobalMultiOutputConfig() = LoadMultiOutputConfig(content);
             bfree(content);

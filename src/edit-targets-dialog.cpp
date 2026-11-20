@@ -297,7 +297,7 @@ class EditTargetsDialogImpl: public QDialog
         auto fileName = QFileDialog::getSaveFileName(
             this,
             obs_module_text("Btn.ExportConfig"),
-            "obs-multi-rtmp-config.json",
+            "sp-core-multiple-rtmp-config.json",
             "JSON (*.json)"
         );
         if (fileName.isEmpty())
